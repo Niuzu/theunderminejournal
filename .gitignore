@@ -58,3 +58,7 @@ target/
 
 # Test Script
 test_area.py
+
+
+#IDEs
+.idea
