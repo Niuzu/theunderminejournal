@@ -67,7 +67,7 @@ def get_item_current_price(item_id, realm_index) -> int:
         None
     """
 
-    #  get item json and direct to name
+    #  get item json and direct to price
     item_price = __get_item_json__(item_id, realm_index)[
         "stats"][0]["price"]
 
@@ -90,8 +90,77 @@ def get_item_quantity(item_id, realm_index) -> int:
         None
     """
 
-    #  get item json and direct to name
+    #  get item json and direct to quantity
     item_quantity = __get_item_json__(item_id, realm_index)[
         "stats"][0]["quantity"]
 
     return item_quantity
+
+
+def get_item_current_auctions(item_id, realm_index) -> list:
+    """
+    Returns current auctions placed in the auctionshouse from underminejournal json
+
+    Args:
+        item_id (int): Defines the item with an id. Id's can be found at: 'https://www.wowhead.com/items'
+        realm_index (int): Defines the realm with an id. List of Id's couln't be found. Thrall-EU = 238 
+
+    Returns:
+        list: Returns a list with the current auctions placed in the auctionhouse
+        None: Returns None if no items or data was found
+
+    Raises:
+        None
+    """
+
+    #  get item json and direct to auctions
+    item_current_auctions = __get_item_json__(item_id, realm_index)[
+        "auctions"]["data"]
+
+    return item_current_auctions
+
+
+def get_item_daily(item_id, realm_index) -> list:
+    """
+    Returns daily auction information from underminejournal json
+
+    Args:
+        item_id (int): Defines the item with an id. Id's can be found at: 'https://www.wowhead.com/items'
+        realm_index (int): Defines the realm with an id. List of Id's couln't be found. Thrall-EU = 238 
+
+    Returns:
+        list: Returns a list with the daily item informations
+        None: Returns None if no items or data was found
+
+    Raises:
+        None
+    """
+
+    #  get item json and direct to daily
+    item_daily = __get_item_json__(item_id, realm_index)[
+        "daily"]
+
+    return item_daily
+
+
+def get_item_history(item_id, realm_index) -> list:
+    """
+    Returns snapshots of historical prices from underminejournal json
+
+    Args:
+        item_id (int): Defines the item with an id. Id's can be found at: 'https://www.wowhead.com/items'
+        realm_index (int): Defines the realm with an id. List of Id's couln't be found. Thrall-EU = 238 
+
+    Returns:
+        list: Returns a list with quantity and prices of a given timestamp
+        None: Returns None if no items or data was found
+
+    Raises:
+        None
+    """
+
+    #  get item json and direct to history
+    item_history = __get_item_json__(item_id, realm_index)[
+        "history"][0]
+
+    return item_history
